@@ -1,4 +1,3 @@
-
 import { useCallback } from "react";
 import Particles from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
@@ -18,8 +17,8 @@ const ParticleBackground = () => {
     <Particles
       id="tsparticles"
       className="fixed inset-0 -z-10"
-      particlesInit={particlesInit}
-      particlesLoaded={particlesLoaded}
+      init={particlesInit}
+      loaded={particlesLoaded}
       options={{
         background: {
           color: {
