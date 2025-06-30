@@ -1,3 +1,4 @@
+
 import { useCallback } from "react";
 import Particles from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
@@ -5,17 +6,20 @@ import type { Container, Engine } from "@tsparticles/engine";
 
 const ParticleBackground = () => {
   const particlesInit = useCallback(async (engine: Engine) => {
+    console.log("Particles init", engine);
     await loadSlim(engine);
   }, []);
 
   const particlesLoaded = useCallback(async (container: Container | undefined) => {
-    console.log(container);
+    console.log("Particles loaded", container);
   }, []);
 
   return (
     <Particles
       id="tsparticles"
       className="fixed inset-0 -z-10"
+      init={particlesInit}
+      loaded={particlesLoaded}
       options={{
         background: {
           color: {
@@ -86,8 +90,6 @@ const ParticleBackground = () => {
         },
         detectRetina: true,
       }}
-      init={particlesInit}
-      loaded={particlesLoaded}
     />
   );
 };
